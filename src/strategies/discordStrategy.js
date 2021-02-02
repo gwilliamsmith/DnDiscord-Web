@@ -5,12 +5,14 @@ const DiscordUser = require('../models/DiscordUser')
 passport.serializeUser((user, done) => {
     console.log('Serialize')
     done(null, user.id)
+    console.log(user)
 })
 
 passport.deserializeUser( async (id, done) => {
     console.log('Deserialize')
-    const user = DiscordUser.findById(id)
+    const user = await DiscordUser.findById(id)
     if(user){
+        console.log(user)
         done(null, user)
     }
 })
@@ -34,7 +36,6 @@ passport.use(new DiscordStrategy({
             done(null, savedUser)
         }
     } catch (err) { 
-        console.log(err)
         done(err, null)
     }
 }))

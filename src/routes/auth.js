@@ -7,10 +7,8 @@ router.get('/', passport.authenticate('discord'))
 //
 
 router.get('/redirect', passport.authenticate('discord',{
-    failureRedirect: '/forbidden'
-}), (req, res) => {
-    console.log('redirect')
-    res.send(req.user)
-})
+    failureRedirect : '/forbidden',
+    successRedirect : '/dashboard' 
+}))
 
 module.exports = router
