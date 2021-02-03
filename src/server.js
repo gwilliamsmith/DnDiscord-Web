@@ -36,10 +36,6 @@ app.use(passport.session())
 app.use('/auth', authRoute)
 app.use('/dashboard', dashboardRoute)
 
-app.get('/', (req, res) => {
-    res.send('Homepage')
-})
-
 app.listen(PORT, () => {
     console.log(`Now listening on port: ${PORT}`)
 })
